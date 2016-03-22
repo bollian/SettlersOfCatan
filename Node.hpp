@@ -1,6 +1,8 @@
 #ifndef SETTLERS_OF_CATAN_NODE_H_
 #define SETTLERS_OF_CATAN_NODE_H_
 
+#include <Catan.hpp>
+
 class Node
 {
 public:

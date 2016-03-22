@@ -1,5 +1,10 @@
+#include <stdexcept>
+
 #include <NotImplementedException.hpp>
 #include <Route.hpp>
+#include <Tile.hpp>
+
+using namespace std;
 
 const int Route::ADJ_TILE_COUNT = 2;
 const int Route::ADJ_SETTLEMENT_COUNT = 2;
@@ -27,5 +32,24 @@ Route::RouteLevel Route::getLevel() const
 
 Route::RouteType Route::getType() const
 {
-	throw NotImplementedException(__FILE__, __func__);
+	int adj_sea_count = 0;
+	
+	Tile* tile;
+	for (int i = 0; i < ADJ_TILE_COUNT; ++i) {
+		tile = getAdjTile(i);
+		if (tile == nullptr || tile->getType() == Tile::SEA) {
+			++adj_sea_count;
+		}
+	}
+	
+	switch (adj_sea_count) {
+	case 0:
+		return Route::LAND;
+	case 1:
+		return Route::COAST;
+	case 2:
+		return Route::SEA;
+	default:
+		throw logic_error("Calculated impossible number of adjacent sea tiles");
+	}
 }

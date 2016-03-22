@@ -18,18 +18,15 @@ Node::Node(int x, int y, int adj_tile_count, int adj_settlement_count, int adj_r
 	adj_routes(new Route*[adj_route_count])
 {
 	int i;
-	for (i = 0; i < adj_tile_count; ++i)
-	{
+	for (i = 0; i < adj_tile_count; ++i) {
 		adj_tiles[i] = nullptr;
 	}
 	
-	for (i = 0; i < adj_settlement_count; ++i)
-	{
+	for (i = 0; i < adj_settlement_count; ++i) {
 		adj_settlements[i] = nullptr;
 	}
 	
-	for (i = 0; i < adj_route_count; ++i)
-	{
+	for (i = 0; i < adj_route_count; ++i) {
 		adj_routes[i] = nullptr;
 	}
 }
