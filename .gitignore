@@ -1,0 +1,9 @@
+# cmake files
+Makefile
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+
+# qt files
+moc_*.cpp
+*_automoc.cpp
