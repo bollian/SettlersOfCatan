@@ -11,7 +11,10 @@ const int Route::ADJ_SETTLEMENT_COUNT = 2;
 const int Route::ADJ_ROUTE_COUNT = 4;
 	
 Route::Route(int x, int y, TileGroup tiles, SettlementGroup settlements, RouteGroup routes) : Node(x, y, ADJ_TILE_COUNT, ADJ_SETTLEMENT_COUNT, ADJ_ROUTE_COUNT),
-	level(Route::EMPTY)
+	level(Route::EMPTY),
+	
+	port_resource(Resource::NONE),
+	port_ratio(-1)
 {
 	setAdjTile(0, tiles.tile1);
 	setAdjTile(1, tiles.tile2);
@@ -23,6 +26,17 @@ Route::Route(int x, int y, TileGroup tiles, SettlementGroup settlements, RouteGr
 	setAdjRoute(1, routes.route2);
 	setAdjRoute(2, routes.route3);
 	setAdjRoute(3, routes.route4);
+}
+
+Route::Route(int x, int y, Resource resource, int ratio, TileGroup tiles, SettlementGroup settlements, RouteGroup routes) :
+	Node(x, y, ADJ_TILE_COUNT, ADJ_SETTLEMENT_COUNT, ADJ_ROUTE_COUNT),
+	
+	level(Route::EMPTY),
+	
+	port_resource(resource),
+	port_ratio(ratio)
+{
+	
 }
 
 Route::RouteLevel Route::getLevel() const
@@ -52,4 +66,19 @@ Route::RouteType Route::getType() const
 	default:
 		throw logic_error("Calculated impossible number of adjacent sea tiles");
 	}
+}
+
+Resource Route::getPortResource() const
+{
+	return port_resource;
+}
+
+int Route::getPortRatio() const
+{
+	return port_ratio;
+}
+
+bool Route::isPort() const
+{
+	return getType() == RouteType::COAST && port_ratio != -1;
 }
