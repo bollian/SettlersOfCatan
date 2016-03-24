@@ -73,6 +73,8 @@ private:
 	static const int ADJ_SETTLEMENT_COUNT;
 	static const int ADJ_ROUTE_COUNT;
 	
+	void setupAdjacencies(TileGroup tiles, SettlementGroup settlements, RouteGroup routes);
+	
 	RouteLevel level;
 	
 	Resource port_resource;

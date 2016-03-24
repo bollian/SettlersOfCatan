@@ -16,16 +16,7 @@ Route::Route(int x, int y, TileGroup tiles, SettlementGroup settlements, RouteGr
 	port_resource(Resource::NONE),
 	port_ratio(-1)
 {
-	setAdjTile(0, tiles.tile1);
-	setAdjTile(1, tiles.tile2);
-	
-	setAdjSettlement(0, settlements.settlement1);
-	setAdjSettlement(1, settlements.settlement2);
-	
-	setAdjRoute(0, routes.route1);
-	setAdjRoute(1, routes.route2);
-	setAdjRoute(2, routes.route3);
-	setAdjRoute(3, routes.route4);
+	setupAdjacencies(tiles, settlements, routes);
 }
 
 Route::Route(int x, int y, Resource resource, int ratio, TileGroup tiles, SettlementGroup settlements, RouteGroup routes) :
@@ -36,7 +27,21 @@ Route::Route(int x, int y, Resource resource, int ratio, TileGroup tiles, Settle
 	port_resource(resource),
 	port_ratio(ratio)
 {
+	setupAdjacencies(tiles, settlements, routes);
+}
+
+void Route::setupAdjacencies(TileGroup tiles, SettlementGroup settlements, RouteGroup routes)
+{
+	setAdjTile(0, tiles.tile1);
+	setAdjTile(1, tiles.tile2);
 	
+	setAdjSettlement(0, settlements.settlement1);
+	setAdjSettlement(1, settlements.settlement2);
+	
+	setAdjRoute(0, routes.route1);
+	setAdjRoute(1, routes.route2);
+	setAdjRoute(2, routes.route3);
+	setAdjRoute(3, routes.route4);
 }
 
 Route::RouteLevel Route::getLevel() const
