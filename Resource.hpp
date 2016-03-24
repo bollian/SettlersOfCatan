@@ -1,0 +1,13 @@
+#ifndef SETTLERS_OF_CATAN_RESOURCE_H_
+#define SETTLERS_OF_CATAN_RESOURCE_H_
+
+enum Resource {
+	NONE,
+	BRICK,
+	GRAIN,
+	LUMBER,
+	ORE,
+	WOOL
+};
+
+#endif // SETTLERS_OF_CATAN_RESOURCE_H_
