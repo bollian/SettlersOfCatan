@@ -19,7 +19,8 @@ set(SOURCES
 	Tile.cpp
 	Player.cpp
 	Node.cpp
-	NotImplementedException.cpp)
+	NotImplementedException.cpp
+	VictoryPointCard.cpp)
 
 add_executable(SettlersOfCatan ${SOURCES})
 

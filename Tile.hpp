@@ -2,6 +2,7 @@
 #define SETTLERS_OF_CATAN_TILE_H_
 
 #include <Node.hpp>
+#include <Resource.hpp>
 
 class Tile : public Node
 {
@@ -46,6 +47,7 @@ public:
 	Tile(int x, int y, TileType type, int dice, TileGroup tiles, SettlementGroup settlements, RouteGroup routes);
 	
 	TileType getType() const;
+	static Resource convertTileTypeToResource(TileType type);
 	int getDiceValue() const;
 	/**
 	 * checks to see if this tile has the robber

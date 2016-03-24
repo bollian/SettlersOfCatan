@@ -38,6 +38,25 @@ Tile::TileType Tile::getType() const
 	return type;
 }
 
+Resource Tile::convertTileTypeToResource(TileType type)
+{
+	switch (type) {
+	case TileType::BRICK:
+		return Resource::BRICK;
+	case TileType::GRAIN:
+		return Resource::GRAIN;
+	case TileType::LUMBER:
+		return Resource::LUMBER;
+	case TileType::ORE:
+		return Resource::ORE;
+	case TileType::WOOL:
+		return Resource::WOOL;
+	case TileType::SEA:
+	case TileType::DESERT:
+		return Resource::NONE;
+	}
+}
+
 int Tile::getDiceValue() const
 {
 	return dice_value;
